@@ -1,0 +1,32 @@
+<h1>Q  u  i  z </h1>
+<div>
+    <div class="container">
+        <div>
+<!--            <input [(ngModel)]="newTask">-->
+            <button id="przyciskLosuj" [disabled]="isDisable"  (click)="random()">{{buttonRand}}</button><p>{{word}} </p><input [(ngModel)]="inputText"><button [disabled]="isDisablePrzetlumacz" (click)="sprawdzOdp()" >Przetłumacz</button>
+            <div id="czyPrawidlowaOdp">{{dbZle}} {{prawidlowa}}</div>
+            <br>
+            Punkty:
+            <br>
+            <div id="punkty">{{points}}/5</div>
+            <div id="wynik">
+                <div id="koniec" [hidden]="koniecWynik">KONIEC GRY!!! Twój wynik: {{lastResult}} sekund</div>
+                <div id="proba">.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="containerResults">
+        Najlepsze wyniki:
+        <ng-container *ngIf="tasksList.length > 0; else noTask">
+        <ul>
+            <li *ngFor="let x of tasksList">
+                {{x}}
+            </li>
+         </ul>
+        </ng-container>
+        <ng-template #noTask>
+                <p>(brak wyników)</p>
+                </ng-template>
+    </div>
+</div>
